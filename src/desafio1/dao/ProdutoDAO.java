@@ -42,10 +42,22 @@ public class ProdutoDAO {
 				
 		Statement stm = connection.createStatement();
 		
-		if(atributo=="desconto") {//os atributos desconto, dataInicio e dataFim seram convertidos seu valores antes de ser enviados a BD (BigDecimal e LocalDate)
+		//os atributos desconto, dataInicio e dataFim sao recebidos em String e
+		//seram convertidos seu valores aos tipos correspondentes antes de ser enviados a BD (BigDecimal e LocalDate)
+		
+		if(atributo=="desconto") {
 			BigDecimal valor = new BigDecimal(valorR);	
 			stm.execute("UPDATE `avaliacao2`.`produto` SET `"+atributo+"` = '"+valor+"' WHERE `id` = '"+id+"'");
-		} else {
+		}
+		else if(atributo=="dataInicio") {
+			LocalDate dataIni = LocalDate.parse(valorR);			
+			stm.execute("UPDATE `avaliacao2`.`produto` SET `"+atributo+"` = '"+dataIni+"' WHERE `id` = '"+id+"'");
+		}
+		else if(atributo=="dataFim") {			
+			LocalDate dataFinal = LocalDate.parse(valorR);	
+			stm.execute("UPDATE `avaliacao2`.`produto` SET `"+atributo+"` = '"+dataFinal+"' WHERE `id` = '"+id+"'");
+		}
+		else {
 			stm.execute("UPDATE `avaliacao2`.`produto` SET `"+atributo+"` = '"+valorR+"' WHERE `id` = '"+id+"'");
 		}				
 		
@@ -79,7 +91,7 @@ public class ProdutoDAO {
 		
 		//LISTADO CONTROLADO DE REGISTROS -----------------------------------------------------------------------------------------
 				PreparedStatement stm1 = 
-						connection.prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO WHERE id>="+inicio+" and id<"+fim+"");
+						connection.prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO WHERE id>="+inicio+" and id<="+fim+"");
 				stm1.execute();
 				
 				ResultSet rst = stm1.getResultSet();

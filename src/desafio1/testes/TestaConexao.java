@@ -1,7 +1,9 @@
-package desafio1;
+package desafio1.testes;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import desafio1.ConnectionFactory;
 
 public class TestaConexao {
 

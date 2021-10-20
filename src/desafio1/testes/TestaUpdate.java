@@ -1,10 +1,12 @@
-package desafio1;
+package desafio1.testes;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TestaDelete {
+import desafio1.ConnectionFactory;
+
+public class TestaUpdate {
 
 	public static void main(String[] args) throws SQLException {
 		
@@ -13,12 +15,11 @@ public class TestaDelete {
 				
 		Statement stm = connection.createStatement();	
 		
-		stm.execute("DELETE FROM `avaliacao2`.`produto` WHERE (`id` = '2');");	
+		stm.execute("UPDATE `avaliacao2`.`produto` SET `desconto` = '13300' WHERE `id` = '1'");	
 		
-		System.out.println("O id eliminado foi o : 2");
+		System.out.println("O id atualizado foi: 1");
 		
 		connection.close();		
-
 	}
-
 }
+

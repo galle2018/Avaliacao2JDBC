@@ -1,23 +1,21 @@
-package desafio1;
+package desafio1.testes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class PopularBD {
+public class TestePopularBD {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		cargarDatos();
 	}
 	
 	public static void cargarDatos() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
-		// Definimos el driver y la url
-		//String sDriver = "com.mysql.jdbc.Driver";
+		// Definimos el driver y la url		
 		String sURL = "jdbc:mysql://localhost/avaliacao2?useTimezone=true&serverTimezone=UTC";
 		Connection con = null;
-		//Class.forName(sDriver); 
-		con = DriverManager.getConnection(sURL,"root","root");
+				con = DriverManager.getConnection(sURL,"root","root");
 		PreparedStatement stmt = con.prepareStatement("INSERT INTO produto VALUES (?,?,?,?,?)");
 		
 		String nome[]={"'Netbook Acer'",           "'Netbook Lenovo'",       "'Netbook Asus'"};

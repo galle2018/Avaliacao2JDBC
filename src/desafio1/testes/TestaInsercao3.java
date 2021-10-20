@@ -1,7 +1,10 @@
-package desafio1;
+package desafio1.testes;
 
 import java.sql.Statement;
 import java.time.LocalDate;
+
+import desafio1.ConnectionFactory;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;

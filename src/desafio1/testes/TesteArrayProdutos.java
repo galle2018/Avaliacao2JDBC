@@ -1,6 +1,6 @@
-package desafio1;
+package desafio1.testes;
 
-public class arrayProdutos {
+public class TesteArrayProdutos {
 
 	String produtos[];
 			
